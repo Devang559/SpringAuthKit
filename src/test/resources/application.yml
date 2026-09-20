@@ -1,0 +1,65 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:authkitdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+  h2:
+    console:
+      enabled: false
+  authkit:
+    enabled: true
+    schema:
+      mode: managed
+    authentication:
+      identifier: email
+    user:
+      email:
+        enabled: true
+        required: true
+      first-name:
+        enabled: true
+        required: true
+      last-name:
+        enabled: true
+    password:
+      min-length: 8
+      require-lowercase: true
+      require-number: true
+      require-uppercase: false
+      require-special-character: false
+    jwt:
+      secret: "test-secret-very-long-and-secure-0123456789"
+      access-token-expiration: 15m
+      refresh-token-expiration: 7d
+    email:
+      verification-required: true
+      otp-enabled: true
+      otp-length: 6
+      otp-expiration: 5m
+      max-attempts: 5
+    roles:
+      enabled: true
+      default: USER
+      allowed: [USER, ADMIN]
+    permissions:
+      enabled: false
+    rate-limit:
+      enabled: false
+    security:
+      account-lockout-enabled: false
+      max-failed-attempts: 5
+      lockout-duration: 15m
+
+logging:
+  level:
+    root: INFO
+    io.github.devang559.authkit: DEBUG
+    org.springframework.security: DEBUG

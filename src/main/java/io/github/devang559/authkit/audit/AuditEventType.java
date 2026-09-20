@@ -1,0 +1,17 @@
+package io.github.devang559.authkit.audit;
+
+public enum AuditEventType {
+    USER_REGISTERED,
+    LOGIN_SUCCESS,
+    LOGIN_FAILED,
+    LOGOUT,
+    EMAIL_VERIFIED,
+    OTP_SENT,
+    OTP_VERIFIED,
+    PASSWORD_CHANGED,
+    PASSWORD_RESET,
+    ROLE_CHANGED,
+    ACCOUNT_DISABLED,
+    ACCOUNT_LOCKED,
+    REGISTRATION_OTP_SENT
+}
