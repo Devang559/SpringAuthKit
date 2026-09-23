@@ -35,13 +35,13 @@
         </license>
     </licenses>
 
-    <developers>
-        <developer>
-            <id>devang559</id>
-            <name>Devang Sharma</name>
-            <email>devang559@example.com</email>
-        </developer>
-    </developers>
+   <developers>
+    <developer>
+        <id>Devang559</id>
+        <name>Devang599</name>
+        <email>devangsharma944@gmail.com</email>
+    </developer>
+</developers>
 
     <scm>
         <connection>scm:git:git://github.com/devang559/SpringAuthKit.git</connection>
