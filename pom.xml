@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>io.github.devang559</groupId>
+    <groupId>io.github.Devang559</groupId>
     <artifactId>spring-authkit</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -23,8 +23,10 @@
     <properties>
         <java.version>17</java.version>
         <jjwt.version>0.12.7</jjwt.version>
-        <spring-authkit.version>1.0.0-SNAPSHOT</spring-authkit.version>
-        <maven.javadoc.skip>false</maven.javadoc.skip>
+        <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
+        <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
+        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
     </properties>
 
     <licenses>
@@ -35,20 +37,21 @@
         </license>
     </licenses>
 
-   <developers>
-    <developer>
-        <id>Devang559</id>
-        <name>Devang599</name>
-        <email>devangsharma944@gmail.com</email>
-    </developer>
-</developers>
+    <developers>
+        <developer>
+            <id>Devang559</id>
+            <name>Devang Sharma</name>
+            <email>devangsharma944@gmail.com</email>
+            <organizationUrl>https://github.com/Devang559</organizationUrl>
+        </developer>
+    </developers>
 
-   <scm>
-    <connection>scm:git:git://github.com/Devang559/SpringAuthKit.git</connection>
-    <developerConnection>scm:git:git@github.com:Devang559/SpringAuthKit.git</developerConnection>
-    <tag>HEAD</tag>
-    <url>https://github.com/Devang559/SpringAuthKit</url>
-</scm>
+    <scm>
+        <connection>scm:git:git://github.com/Devang559/SpringAuthKit.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:Devang559/SpringAuthKit.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/Devang559/SpringAuthKit</url>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -125,6 +128,7 @@
 
     <build>
         <plugins>
+            <!-- Compiler plugin with Lombok processor -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -140,9 +144,24 @@
                 </configuration>
             </plugin>
 
+            <!-- 1. Central Publishing Plugin (Replaces legacy nexus-staging) -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>${central-publishing-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <waitUntil>published</waitUntil>
+                </configuration>
+            </plugin>
+
+            <!-- 2. Attach Sources JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -153,9 +172,11 @@
                 </executions>
             </plugin>
 
+            <!-- 3. Attach Javadoc JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <failOnError>false</failOnError>
                     <additionalJOption>-Xdoclint:none</additionalJOption>
@@ -170,42 +191,21 @@
                 </executions>
             </plugin>
 
+            <!-- 4. GPG Signing Plugin -->
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.1.0</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
 </project>
