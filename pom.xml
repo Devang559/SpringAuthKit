@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>io.github.Devang559</groupId>
+    <groupId>io.github.devang559</groupId>
     <artifactId>spring-authkit</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
