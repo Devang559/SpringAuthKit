@@ -18,7 +18,7 @@
 
     <name>SpringAuthKit</name>
     <description>Production-oriented reusable Spring Boot authentication and authorization library.</description>
-    <url>https://github.com/devang559/SpringAuthKit</url>
+    <url>https://github.com/Devang559/SpringAuthKit</url>
 
     <properties>
         <java.version>17</java.version>
@@ -43,12 +43,12 @@
     </developer>
 </developers>
 
-    <scm>
-        <connection>scm:git:git://github.com/devang559/SpringAuthKit.git</connection>
-        <developerConnection>scm:git:git@github.com:devang559/SpringAuthKit.git</developerConnection>
-        <tag>HEAD</tag>
-        <url>https://github.com/devang559/SpringAuthKit</url>
-    </scm>
+   <scm>
+    <connection>scm:git:git://github.com/Devang559/SpringAuthKit.git</connection>
+    <developerConnection>scm:git:git@github.com:Devang559/SpringAuthKit.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/Devang559/SpringAuthKit</url>
+</scm>
 
     <dependencies>
         <dependency>
