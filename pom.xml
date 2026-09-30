@@ -19,6 +19,10 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
+
+    
+
+
     <!-- Project Metadata -->
     <name>SpringAuthKit</name>
     <description>Production-oriented reusable Spring Boot authentication and authorization library.</description>
