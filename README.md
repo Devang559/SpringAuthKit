@@ -49,7 +49,7 @@ Maven:
 <dependency>
     <groupId>io.github.devang559</groupId>
     <artifactId>spring-authkit</artifactId>
-    <version>0.11.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
