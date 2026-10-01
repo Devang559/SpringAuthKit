@@ -16,12 +16,8 @@
     <!-- Project Coordinates -->
     <groupId>io.github.devang559</groupId>
     <artifactId>spring-authkit</artifactId>
-    <version>0.11.0</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
-
-
-    
-
 
     <!-- Project Metadata -->
     <name>SpringAuthKit</name>
@@ -34,7 +30,9 @@
 
         <jjwt.version>0.12.7</jjwt.version>
 
-        <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
+        <!-- Maven Central Publishing -->
+        <central-publishing-maven-plugin.version>0.11.0</central-publishing-maven-plugin.version>
+
         <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
@@ -160,7 +158,7 @@
     <build>
         <plugins>
 
-            <!-- Compiler -->
+            <!-- Maven Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
